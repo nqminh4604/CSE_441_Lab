@@ -1,6 +1,6 @@
 {
-  "root": "E:\\EIU\\T1-2425\\CSE 441\\MyFirstApp",
-  "reactNativePath": "E:\\EIU\\T1-2425\\CSE 441\\MyFirstApp\\node_modules\\react-native",
+  "root": "D:\\EIU\\Q1-2425\\CSE_441\\Lab\\Lab1\\Q4reactNative",
+  "reactNativePath": "D:\\EIU\\Q1-2425\\CSE_441\\Lab\\Lab1\\Q4reactNative\\node_modules\\react-native",
   "reactNativeVersion": "0.75",
   "dependencies": {},
   "commands": [
@@ -164,7 +164,7 @@
         {
           "name": "--path <path>",
           "description": "Path to the React Native project root.",
-          "default": "E:\\EIU\\T1-2425\\CSE 441\\MyFirstApp"
+          "default": "D:\\EIU\\Q1-2425\\CSE_441\\Lab\\Lab1\\Q4reactNative"
         },
         {
           "name": "--platform <string>",
@@ -451,19 +451,19 @@
   "assets": [],
   "project": {
     "ios": {
-      "sourceDir": "E:\\EIU\\T1-2425\\CSE 441\\MyFirstApp\\ios",
+      "sourceDir": "D:\\EIU\\Q1-2425\\CSE_441\\Lab\\Lab1\\Q4reactNative\\ios",
       "xcodeProject": {
-        "name": "MyFirstApp.xcodeproj",
+        "name": "reactNative0.xcodeproj",
         "path": ".",
         "isWorkspace": false
       },
       "assets": []
     },
     "android": {
-      "sourceDir": "E:\\EIU\\T1-2425\\CSE 441\\MyFirstApp\\android",
+      "sourceDir": "D:\\EIU\\Q1-2425\\CSE_441\\Lab\\Lab1\\Q4reactNative\\android",
       "appName": "app",
-      "packageName": "com.myfirstapp",
-      "applicationId": "com.myfirstapp",
+      "packageName": "com.reactnative0",
+      "applicationId": "com.reactnative0",
       "mainActivity": ".MainActivity",
       "assets": []
     }
