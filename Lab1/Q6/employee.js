@@ -1,6 +1,5 @@
 import {View, Button, Text, TextInput } from "react-native";
 
-
 export default function Employee(props)
 {
     return (
