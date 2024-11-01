@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Alert, Button, StyleSheet, Text, TextInput, View } from "react-native";
 
-export default Add = () => {
+const ProductAdd = () => {
     const styles = StyleSheet.create({
 
         title: {
@@ -103,3 +103,4 @@ export default Add = () => {
 
 }
 
+export default ProductAdd;

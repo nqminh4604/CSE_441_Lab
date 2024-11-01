@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { View, Text, StyleSheet, FlatList, Image, Button } from "react-native";
 
-export default function Products() {
+const Products = () => {
 
     const [data, setData] = useState([]);
     const filePath = "https://dummyjson.com/products/";
     useEffect(() => {
-        //Alert.alert(filePath);
         fetch(filePath)
             .then((response) => {
                 if (!response.ok) {
@@ -114,3 +113,5 @@ export default function Products() {
 
 
 }
+
+export default Products;
