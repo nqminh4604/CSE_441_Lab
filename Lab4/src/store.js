@@ -28,8 +28,8 @@ const contactSlice = createSlice({
 });
 
 export const { fetchContactSuccess } = contactSlice.action;
-const store = configureStore({
+const Store = configureStore({
     reducer: contactSlice.reducer,
 });
 
-export default store;
+export default Store;

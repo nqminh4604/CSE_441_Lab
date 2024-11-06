@@ -1,4 +1,5 @@
 import { StyleSheet, View } from "react-native";
+import ContactThum from "./ContactThum";
 
 
 const ProfileContact = ({route}) => {
@@ -7,7 +8,9 @@ const ProfileContact = ({route}) => {
 
     return (
         <View style={styles.container}>
-            
+            <View style={styles.avatarSection}>
+                <ContactThum avatar></ContactThum>
+            </View>
         </View>
     );
 
@@ -27,3 +30,5 @@ const ProfileContact = ({route}) => {
         },
     });
 } 
+
+export default ProfileContact;
