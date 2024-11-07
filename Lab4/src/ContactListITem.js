@@ -1,6 +1,5 @@
-import { StyleSheet, TouchableHighlight, View } from "react-native"
+import { StyleSheet, TouchableHighlight, View, Image } from "react-native"
 import { Text } from "react-native-paper"
-import { Image } from "react-native-paper/lib/typescript/components/Avatar/Avatar"
 
 
 const ContactListITem = ({ name, avatar, phone, onPress }) => {

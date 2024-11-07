@@ -7,7 +7,7 @@ import { FlatList, StyleSheet, View } from "react-native";
 const keyExtractor = ({ phone }) => phone;
 
 const fetchContacts = async () => {
-    const data = await fetch("https://ramdomuser.me/api/?results=50");
+    const data = await fetch("https://randomuser.me/api/?results=50");
     const ContactData = await data.json();
     return ContactData.results.map(mapContact);
 };
@@ -18,13 +18,14 @@ const Contacts = ({ navigation }) => {
     useEffect(() => {
         fetchContacts()
             .then(
-                contacts => {
-                    dispatch(fetchContactSuccess(contacts));
+                cont => {
+                    dispatch(fetchContactSuccess(cont));
                 }
             )
             .catch(
                 e => {
-                    console.log(e);
+                    console.error("Error ne", e);
+                    
                 }
             )
     }, [])
@@ -40,6 +41,16 @@ const Contacts = ({ navigation }) => {
             ></ContactListITem>
         )
     };
+
+    const styles = StyleSheet.create({
+        container: {
+            justifyContent: "center",
+            flex: 1,
+            paddingLeft: 10,
+            paddingRight: 10,
+        }
+    })
+    
     return (
         <View style={styles.container}>
             <FlatList
@@ -50,14 +61,6 @@ const Contacts = ({ navigation }) => {
         </View>
     )
 
-    const styles = StyleSheet.create({
-        container: {
-            justifyContent: "center",
-            flex: 1,
-            paddingLeft: 10,
-            paddingRight: 10,
-        }
-    })
 }
 
 export default Contacts;

@@ -24,7 +24,7 @@ const App = () => {
 
   return (
     <SafeAreaProvider>
-      <BottomNavigation 
+      <BottomNavigation
       navigationState={{ index, routes}}
       onIndexChange={ setIndex}
       renderScene={ renderScene }

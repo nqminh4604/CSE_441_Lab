@@ -60,8 +60,8 @@ const TabNavigator = () => {
       initialRouteName="ContactScreen"
       barStyle={{ backgroundColor: "blue" }}
       labeled={false}
-      activeColor={"greyLight"}
-      inactiveColor={"greyDark"}
+      activeColor={"#D3D3D3"}
+      inactiveColor={"#A9A9A9"}
     >
       <Tab.Screen
         name="Contacts"
@@ -83,3 +83,5 @@ const App = () => {
     </Provider>
   );
 }
+
+export default App;

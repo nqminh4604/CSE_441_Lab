@@ -24,6 +24,7 @@ const Products = () => {
     const styles = StyleSheet.create({
         container: {
             backgroundColor: "#FFF",
+            marginBottom: 73
         },
         title: {
             fontSize: 25,
