@@ -15,6 +15,7 @@ const fetchContacts = async () => {
 const Contacts = ({ navigation }) => {
     const { contacts } = useSelector((state) => state);
     const dispatch = useDispatch();
+
     useEffect(() => {
         fetchContacts()
             .then(
@@ -24,8 +25,7 @@ const Contacts = ({ navigation }) => {
             )
             .catch(
                 e => {
-                    console.error("Error ne", e);
-                    
+                    console.error("Error fetching contacts:", e);
                 }
             )
     }, [])
@@ -50,7 +50,7 @@ const Contacts = ({ navigation }) => {
             paddingRight: 10,
         }
     })
-    
+
     return (
         <View style={styles.container}>
             <FlatList

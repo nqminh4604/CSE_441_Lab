@@ -70,6 +70,13 @@ const TabNavigator = () => {
           tabBarIcon: "star-check"
         }}
       />
+      <Tab.Screen
+        name="Favorite"
+        component={favoriteScreen}
+        options={{
+          tabBarIcon: "star-check"
+        }}
+      />
     </Tab.Navigator>
   );
 }

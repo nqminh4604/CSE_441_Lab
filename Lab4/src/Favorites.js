@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import { useSelector } from "react-redux";
 import ContactThum from "./ContactThum";
 import { FlatList, StyleSheet, View } from "react-native";

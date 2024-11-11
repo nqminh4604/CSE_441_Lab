@@ -1,10 +1,12 @@
+import "react-native-gesture-handler";
 
+import React from "react";
 import PropTypes from "prop-types";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 
-const ContactThum = ({ name, phone, textColor, onPress}) => {
+const ContactThum = ({ name, phone, avatar, textColor, onPress }) => {
     const colorStyle = {
         color: textColor,
     };
@@ -21,9 +23,9 @@ const ContactThum = ({ name, phone, textColor, onPress}) => {
                 ></Image>
             </ImageContact>
 
-            { name !== "" && <Text style={[styles.name, colorStyle]}>{name}</Text>}
+            {name !== "" && <Text style={[styles.name, colorStyle]}>{name}</Text>}
 
-            { phone !== "" && (
+            {phone !== "" && (
                 <View style={styles.phoneSection} >
                     <Icon name="phone" size={16} style={{ color: textColor }} />
                     <Text style={[styles.phone, colorStyle]}>{phone}</Text>
@@ -38,7 +40,7 @@ const styles = StyleSheet.create({
         paddingVertical: 30,
         marginHorizontal: 15,
         alignItems: "center",
-        justifyContent:"center",
+        justifyContent: "center",
     },
     avatar: {
         width: 90,
@@ -66,18 +68,17 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ContactThum; {
-    ContactThum.propTypes = {
-        name: PropTypes.string,
-        avatar: PropTypes.string,
-        phone: PropTypes.string,
-        onPress: PropTypes.func,
-    };
+export default ContactThum;
+ContactThum.propTypes = {
+    name: PropTypes.string,
+    avatar: PropTypes.string,
+    phone: PropTypes.string,
+    onPress: PropTypes.func,
+};
 
-    ContactThum.defaultProps = {
-        name: "",
-        phone: "",
-        textColor: "white",
-        onPress: null,
-    }
+ContactThum.defaultProps = {
+    name: "",
+    phone: "",
+    textColor: "white",
+    onPress: null,
 }

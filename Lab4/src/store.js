@@ -1,9 +1,9 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-import { v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
 
 
-export const mapContact = () => {
-    const { name, picture, phone, cell, email } =  contact;
+export const mapContact = (contact) => {
+    const { name, picture, phone, cell, email } = contact;
     return {
         id: uuid(),
         name: name.first + " " + name.last,
@@ -16,7 +16,7 @@ export const mapContact = () => {
 };
 
 const contactSlice = createSlice({
-    name: "contact",
+    name: "contacts",
     initialState: {
         contacts: [],
     },
