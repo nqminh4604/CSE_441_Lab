@@ -47,4 +47,4 @@ export default styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#FFF",
     },
-});
+}); 
