@@ -1,5 +1,4 @@
-import { Alert, StyleSheet, Text, View } from "react-native";
-import { getCurrentService, getService } from "./store";
+import { StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
@@ -15,9 +14,8 @@ const styles = StyleSheet.create({
     }
 });
 
-
-const DetailService = () => {
-    const { service } = getCurrentService();
+const DetailService = ({ route }) => {
+    const { service } = route.params;
 
     return (
         <View style={styles.container}>

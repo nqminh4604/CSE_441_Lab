@@ -38,12 +38,12 @@ export const PopupMenu = ({ route, navigation }) => {
     Alert.alert("Warning", "Are you sure to delete this this service, it cannot be returned!",
       [
         {
-          text: 'Delete', // Confirm button
-          onPress: () => handleDelete()
-        },
-        {
           text: 'Cancel', // Cancel button
           style: 'cancel',
+        },
+        {
+          text: 'Delete', // Confirm button
+          onPress: () => handleDelete()
         },
       ]
     )

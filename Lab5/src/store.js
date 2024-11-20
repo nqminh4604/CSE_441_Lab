@@ -8,16 +8,6 @@ export const AppTheme = {
     },
 };
 
-const currentService = null;
-
-export const getCurrentService = () => {
-    return currentService
-}
-
-export const setCurrentService = (service) => {
-    currentService = service;
-}
-
 export const saveUser = async (value) => {
     try {
         const user = JSON.stringify(value);
@@ -45,10 +35,3 @@ export const getListOfService = async () => {
     const response = await axios.get("https://kami-backend-5rs0.onrender.com/services");
     return response.data;
 };
-
-export const getService = async (id) => {
-    const response = await axios.get(
-        `https://kami-backend-5rs0.onrender.com/services/${id}`);
-    return response;
-}
-

@@ -87,7 +87,6 @@ const Home = ({ navigation }) => {
     };
 
     useEffect(() => {
-        // setCurrentService(null);
         fetchUserAndServices();
     }, []);
 
@@ -95,9 +94,8 @@ const Home = ({ navigation }) => {
     const renderItem = ({ item: service }) => {
         return (
             <TouchableOpacity style={styles.item} onPress={() => {
-                setCurrentService(service)
-                navigation.navigate("Service Detail", { service })
-                }}>
+                navigation.navigate("Service Detail", { service });
+            }}>
                 <Text style={styles.itemContent}>{service.name}</Text>
                 <Text style={styles.price}>{service.price} đ</Text>
             </TouchableOpacity>

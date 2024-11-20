@@ -45,17 +45,16 @@ const UpdateScreen = ({ route, navigation }) => {
     const [price, setPrice] = useState(0);
     const [loading, setLoading] = useState(false);
 
-    const updateService = async () => {
+    const updateService = async (id, name, price) => {
         setLoading(true);
-        const { _id } = service;
         const { token } = await getUser();
         console.log("Get user successfully: " + token);
-        console.log("Get id service successfully: " + _id);
+        console.log("Get id service successfully: " + id);
 
         try {
-            await axios.put(`https://kami-backend-5rs0.onrender.com/services/${_id}`,
+            await axios.put(`https://kami-backend-5rs0.onrender.com/services/${id}`,
                 {
-                    _id: _id,
+                    id: id,
                     name: name,
                     price: price,
                 },
@@ -65,7 +64,8 @@ const UpdateScreen = ({ route, navigation }) => {
                     }
                 },
             );
-            navigation.goBack();
+            Alert.alert("Successful", "Updated successfully!")
+            navigation.navigate("Home");
         } catch (error) {
             Alert.alert('Error', 'Failed to update the service.');
             console.error('Update failed:', error.response || error.message);
@@ -90,7 +90,8 @@ const UpdateScreen = ({ route, navigation }) => {
                 value={price}
                 onChangeText={setPrice}
             />
-            <TouchableOpacity style={[Styles.button, loading && Styles.buttonDisabled]} onPress={updateService} disabled={loading}>
+            <TouchableOpacity style={[Styles.button, loading && Styles.buttonDisabled]}
+            onPress={() => updateService(service._id, name, price)} disabled={loading}>
                 <Text style={Styles.buttonText}>{loading ? "Updating..." : "Update"}</Text>
             </TouchableOpacity>
         </View>

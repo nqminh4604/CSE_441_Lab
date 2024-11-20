@@ -9,8 +9,10 @@ const LoginScreen = ({ navigation }) => {
 
     const [phone, setPhone] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleLogin = () => {
+        setLoading(true);
         axios.post("https://kami-backend-5rs0.onrender.com/auth", { phone: phone, password: password })
             .then(response => {
                 console.log("this is user response: ", response.data);
@@ -19,7 +21,9 @@ const LoginScreen = ({ navigation }) => {
             })
             .catch(e => {
                 Alert.alert("No user", "Invalid user, please try again!");
-            })
+            }).finally(
+                setLoading(false)
+            )
 
     }
 
@@ -40,8 +44,9 @@ const LoginScreen = ({ navigation }) => {
                     value={password}
                     onChangeText={setPassword}
                 />
-                <TouchableOpacity style={Styles.button} onPress={handleLogin}>
-                    <Text style={Styles.buttonText}>Login</Text>
+                <TouchableOpacity style={[Styles.button, loading && Styles.buttonDisabled]} disabled={loading}
+                    onPress={handleLogin}>
+                    <Text style={Styles.buttonText}>{loading ? "Loading..." : "Log in"}</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>
@@ -84,6 +89,9 @@ const Styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "bold",
         color: "#FFF",
+    },
+    buttonDisabled: {
+        backgroundColor: "#CCC"
     },
 });
 export default LoginScreen;
