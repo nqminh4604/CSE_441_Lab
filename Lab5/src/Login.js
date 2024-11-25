@@ -17,7 +17,7 @@ const LoginScreen = ({ navigation }) => {
             .then(response => {
                 console.log("this is user response: ", response.data);
                 saveUser(response.data);
-                navigation.navigate("Home");
+                navigation.navigate("Main");
             })
             .catch(e => {
                 Alert.alert("No user", "Invalid user, please try again!");
@@ -45,7 +45,7 @@ const LoginScreen = ({ navigation }) => {
                     onChangeText={setPassword}
                 />
                 <TouchableOpacity style={[Styles.button, loading && Styles.buttonDisabled]} disabled={loading}
-                    onPress={handleLogin}>
+                    onPress={() => handleLogin()}>
                     <Text style={Styles.buttonText}>{loading ? "Loading..." : "Log in"}</Text>
                 </TouchableOpacity>
             </View>

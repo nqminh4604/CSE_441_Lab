@@ -22,16 +22,17 @@ export const getUser = async () => {
     return JSON.parse(userData);
 };
 
-export const saveListOfService = async (value) => {
-    try {
-        const services = JSON.stringify(value);
-        await AsyncStorage.setItem("listOfService", services);
-    } catch (error) {
-        console.error("Saving error", error);
-    }
-}
-
 export const getListOfService = async () => {
     const response = await axios.get("https://kami-backend-5rs0.onrender.com/services");
+    return response.data;
+};
+
+export const getListOfTransaction = async () => {
+    const response = await axios.get("https://kami-backend-5rs0.onrender.com/transactions");
+    return response.data;
+};
+
+export const getListOfCustomer = async () => {
+    const response = await axios.get("https://kami-backend-5rs0.onrender.com/customers");
     return response.data;
 };

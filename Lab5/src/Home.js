@@ -78,7 +78,6 @@ const Home = ({ navigation }) => {
         try {
             const userData = await getUser();
             setUser(userData);
-
             const services = await getListOfService();
             setServices(services);
         } catch (error) {
@@ -87,8 +86,9 @@ const Home = ({ navigation }) => {
     };
 
     useEffect(() => {
-        fetchUserAndServices();
-    }, []);
+        const loadScreen = navigation.addListener("focus", () => fetchUserAndServices());
+        return loadScreen;
+    }, [navigation]);
 
 
     const renderItem = ({ item: service }) => {

@@ -28,7 +28,7 @@ export const PopupMenu = ({ route, navigation }) => {
           },
         );
         Alert.alert('Success', 'Service deleted successfully!');
-        navigation.navigate("Home"); // Navigate back after deletion
+        navigation.pop(); 
       } catch (error) {
         Alert.alert('Error', 'Failed to delete the service.');
         console.error('Delete failed:', error.response || error.message);
@@ -38,11 +38,11 @@ export const PopupMenu = ({ route, navigation }) => {
     Alert.alert("Warning", "Are you sure to delete this this service, it cannot be returned!",
       [
         {
-          text: 'Cancel', // Cancel button
+          text: 'Cancel', 
           style: 'cancel',
         },
         {
-          text: 'Delete', // Confirm button
+          text: 'Delete', 
           onPress: () => handleDelete()
         },
       ]

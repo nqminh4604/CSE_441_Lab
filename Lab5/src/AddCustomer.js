@@ -1,9 +1,10 @@
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { AppTheme, getUser } from "./store";
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 
-const UpdateScreen = ({ route, navigation }) => {
+
+const AddCustomer = ({ navigation }) => {
 
     const Styles = StyleSheet.create({
         container: {
@@ -40,62 +41,67 @@ const UpdateScreen = ({ route, navigation }) => {
         },
     });
 
-    const { service } = route.params;
     const [name, setName] = useState("");
-    const [price, setPrice] = useState(0);
+    const [phone, setPhone] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const updateService = async (id, name, price) => {
-        setLoading(true);
-        const { token } = await getUser();
-        console.log("Get user successfully: " + token);
-        console.log("Get id service successfully: " + id);
-
+    const handleAdd = async (data, token) => {
         try {
-            await axios.put(`https://kami-backend-5rs0.onrender.com/services/${id}`,
-                {
-                    id: id,
-                    name: name,
-                    price: price,
-                },
+            await axios.post(
+                `https://kami-backend-5rs0.onrender.com/customers`,
+                data,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     }
                 },
-            );
-            Alert.alert("Successful", "Updated successfully!")
-            navigation.navigate("Home");
+            )
+            Alert.alert("Success", "Customer added successfully!");
+            navigation.pop();
         } catch (error) {
-            Alert.alert('Error', 'Failed to update the service.');
-            console.error('Update failed:', error.response || error.message);
+            Alert.alert('Error', 'Failed to add the customer');
+            console.error('Add failed:', error.response || error.message);
         } finally {
             setLoading(false);
         }
-    };
+    }
+
+    const addCustomer = async () => {
+        const { token } = await getUser();
+        console.log("Get token successfully: " + token);
+
+        const data = {
+            name: name,
+            phone: phone,
+        };
+
+        setLoading(true);
+
+        await handleAdd(data, token);
+
+    }
 
     return (
         <View style={Styles.container}>
-            <Text style={Styles.title}>Service name *</Text>
+            <Text style={Styles.title}>Customer name *</Text>
             <TextInput
                 style={Styles.input}
                 placeholder="Input a service name"
                 value={name}
                 onChangeText={setName}
             />
-            <Text style={Styles.title}>Price *</Text>
+            <Text style={Styles.title}>Phone *</Text>
             <TextInput
                 style={Styles.input}
-                placeholder="0"
-                value={price}
-                onChangeText={setPrice}
+                placeholder="Input phone number"
+                value={phone}
+                onChangeText={setPhone}
             />
-            <TouchableOpacity style={[Styles.button, loading && Styles.buttonDisabled]}
-            onPress={() => updateService(service._id, name, price)} disabled={loading}>
-                <Text style={Styles.buttonText}>{loading ? "Updating..." : "Update"}</Text>
+            <TouchableOpacity style={[Styles.button, loading && Styles.buttonDisabled]} onPress={addCustomer} disabled={loading}>
+                <Text style={Styles.buttonText}>{loading ? "Adding..." : "Add"}</Text>
             </TouchableOpacity>
         </View>
     );
 }
 
-export default UpdateScreen;
+export default AddCustomer;
