@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AppTheme, getListOfCustomer } from "./store";
 import { IconButton } from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
 
 const Customer = ({ navigation }) => {
     const [customers, setCustomers] = useState([]);
@@ -23,11 +22,11 @@ const Customer = ({ navigation }) => {
 
     const renderItem = ({ item: customer }) => {
         return (
-            <View style={styles.item}>
+            <TouchableOpacity style={styles.item} onPress={() => { navigation.navigate("Detail Customer", { id: customer._id }) }}>
                 <View style={styles.left}>
                     <Text
-                        numberOfLines={1} // Limits to 1 line
-                        ellipsizeMode="tail" // Adds "..." at the end
+                        numberOfLines={1}
+                        ellipsizeMode="tail"
                     >
                         <Text style={styles.label}>Customer: </Text>
                         {customer.name}
@@ -56,7 +55,7 @@ const Customer = ({ navigation }) => {
                     />
                     <Text style={styles.rank}>Guest</Text>
                 </View>
-            </View >);
+            </TouchableOpacity >);
     };
 
     return (
@@ -88,10 +87,10 @@ const styles = StyleSheet.create({
         alignContent: "space-between",
     },
     left: {
-        width: "50%",
+        width: "60%",
     },
     right: {
-        width: "50%",
+        width: "40%",
         justifyContent: "center",
         alignItems: "center",
     },

@@ -10,17 +10,26 @@ import Transaction from "./src/Transaction";
 import Customer from "./src/Customer";
 import Setting from "./src/Setting";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import DetailService from "./src/DetailService";
+import DetailService from "./src/ServiceDetails";
 import { MenuProvider } from "react-native-popup-menu";
-import UpdateScreen from "./src/UpdateService";
-import { PopupMenu } from "./src/PopupMenu";
+import UpdateScreen from "./src/ServiceUpdate";
+import { PopupMenu } from "./src/ServicePopupMenu";
 import AddCustomer from "./src/AddCustomer";
-import TransactionDetail from "./src/DetailTransaction";
+import TransactionDetail from "./src/TransactionDetails";
 import { IconButton } from "react-native-paper";
-import { TouchableOpacity } from "react-native";
+import { LogBox, TouchableOpacity } from "react-native";
+import CustomerDetail from "./src/CustomerDetails";
+import CustomerPopupMenu from "./src/CustomerPopupMenu";
+import CustomerUpdateScreen from "./src/CustomerUpdate";
+import AddTransaction from "./src/AddTransaction";
 
 export default App = () => {
 
+  LogBox.ignoreLogs(['Warning: ...']); // Replace with the warning message you want to ignore
+
+  // Ignore all warnings (not recommended for debugging)
+  LogBox.ignoreAllLogs(true);
+  
   const Stack = createStackNavigator();
   const HomeStack = () => {
     return (
@@ -56,6 +65,23 @@ export default App = () => {
 
         <Stack.Screen name="Customer" component={Customer} options={{ headerLeft: () => null }} />
         <Stack.Screen name="Add Customer" component={AddCustomer} />
+        <Stack.Screen name="Edit Customer" component={CustomerUpdateScreen} />
+        <Stack.Screen name="Detail Customer" component={CustomerDetail} options={({ route, navigation }) => ({
+          headerRight: () => (
+            <CustomerPopupMenu route={route} navigation={navigation} />
+          ),
+        })
+
+        } />
+        <Stack.Screen name="Transaction Detail" component={TransactionDetail} options={{
+          headerRight: () => {
+            return (
+              <TouchableOpacity>
+                <IconButton icon="dots-vertical" iconColor="#FFF" size={30} />
+              </TouchableOpacity>
+            )
+          }
+        }} />
       </Stack.Navigator>
     )
   }
@@ -70,8 +96,9 @@ export default App = () => {
           headerTitleStyle: { fontWeight: 'bold' },
         }}>
         <Stack.Screen name="Transaction" component={Transaction} options={{ headerLeft: () => null }} />
+        <Stack.Screen name="Add Transaction" component={AddTransaction} />
         <Stack.Screen name="Transaction Detail" component={TransactionDetail} options={{
-          headerRight: ()=> {
+          headerRight: () => {
             return (
               <TouchableOpacity>
                 <IconButton icon="dots-vertical" iconColor="#FFF" size={30} />

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AppTheme, getListOfTransaction } from "./store";
+import { IconButton } from "react-native-paper";
 
 const Transaction = ({ navigation }) => {
     const [transactions, setTransactions] = useState([]);
@@ -53,6 +54,9 @@ const Transaction = ({ navigation }) => {
                 renderItem={renderItem}
                 keyExtractor={({ id }) => id}
             ></FlatList>
+            <TouchableOpacity style={styles.floatingButton} onPress={() => navigation.navigate("Add Transaction")}>
+                <Text style={styles.floatingButtonText}>+</Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -112,5 +116,18 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
     },
+    header: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center"
+    },
+
+    title: {
+        fontSize: 15,
+        fontWeight: "bold",
+        marginBottom: 10,
+        marginTop: 10,
+    },
+
 });
 export default Transaction;
